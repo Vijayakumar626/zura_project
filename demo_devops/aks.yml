@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myappaks
+  namespace: zura
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: my
+  template:
+    metadata:
+      labels:
+        app: my
+    spec:
+      containers:
+      - name: zuraacr
+        image: zuraacr.azurecr.io/zuracontainer:103
+        ports:
+        - containerPort: 80
